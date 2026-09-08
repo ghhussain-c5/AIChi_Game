@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>AIChE Plant Arcade — Games</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="game-page">
+  <header class="top">
+    <div class="brand">AIChE <span>PLANT ARCADE</span></div>
+    <div class="top-actions">
+      <span id="controlStatus" class="control-status">⌨️ 👆 READY</span>
+      <button id="soundBtn" type="button">🔊 ARCADE SOUND</button>
+      <a class="top-button" href="index.html">⌂ HOME</a>
+    </div>
+  </header>
+  <main>
+    <section id="choose" class="screen active"><div class="head"><div style="color:var(--cyan);font-weight:900;letter-spacing:.16em;font-size:12px">CHOOSE A CHALLENGE</div><h2>Pick one. You’ll understand it in 2 seconds.</h2><p>Each round lasts only 20 seconds.</p></div><div class="games">
+<button class="gamepick sep" id="pickSep"><span class="tag">FAST REACTION</span><div class="sep-art"></div><h3>3-PHASE<br>SEPARATOR</h3><p>See the incoming phase. Send it to GAS, OIL, or WATER. That’s it.</p><div class="card-score">TOP PURITY<br><b id="sepBest">—</b></div></button>
+<button class="gamepick reac" id="pickReact"><span class="tag">STEADY STATE</span><div class="react-art"></div><h3>KEEP R-101<br>STABLE</h3><p>Exothermic reactor: cold loses production, hot risks runaway. Keep it green and make money.</p><div class="card-score">TOP PROFIT<br><b id="reactBest">—</b></div></button>
+</div></section>
+    <section id="sepGame" class="screen"><div class="gamewrap"><div class="gamebar"><div class="titlegroup"><h2>3-Phase Separator Rush</h2><div>Route the incoming phase to the matching outlet.</div></div><div class="timer"><span id="sepTime">20</span>s</div></div><div class="playarea"><div id="sepField"><div class="sep-sky"></div><div class="sepHud"><div class="pill">PURITY <span id="purity">100</span>%</div><div class="pill">COMBO ×<span id="combo">0</span></div></div><div class="sep-vessel"><div class="phaseLabel lg">GAS</div><div class="phaseLabel lo">OIL</div><div class="phaseLabel lw">WATER</div></div><div id="slug" class="slug gas">GAS</div><div id="sepFlash" class="flashmsg"></div><div class="routebar"><button class="route g" data-phase="gas">💨 GAS<small>1 / ←</small></button><button class="route o" data-phase="oil">🟠 OIL<small>2 / ↓</small></button><button class="route w" data-phase="water">💧 WATER<small>3 / →</small></button></div><div id="sepOverlay" class="startoverlay"><div><h3>💨 GAS → GAS</h3><div class="rule">Just <b>match the phase.</b></div><button class="bigbtn" id="sepGo">GO!</button></div></div></div></div></div></section>
+    <section id="reactGame" class="screen"><div class="gamewrap"><div class="gamebar"><div class="titlegroup"><h2>Keep R-101 Stable</h2><div>GREEN = best reaction rate + profit. COLD = low flow. HOT = runaway risk.</div></div><div class="timer"><span id="reactTime">20</span>s</div></div><div class="playarea"><div id="reactField"><div class="weather" id="weather"><span>🌤️ BAHRAIN</span><strong id="ambient">30°C</strong><span id="weatherText">Normal conditions</span></div><div class="sun" id="sun">🌤️</div><div class="plantline"><div class="feedpipe"></div><div class="outpipe"></div><div class="tank"></div><div class="coolpipe"></div></div><div class="metrics"><div class="metric"><small>FEED FLOW</small><b><span id="feed">100</span> kmol/h</b></div><div class="metric"><small>PRODUCT FLOW</small><b><span id="prod">94</span> kmol/h</b></div><div class="metric"><small>REACTOR TEMP</small><b><span id="temp">155</span>°C</b></div><div class="metric"><small>PRESSURE</small><b><span id="pressure">5.0</span> bar</b></div><div class="metric"><small>COOLING VALVE</small><b><span id="cool">50</span>%</b></div><div class="metric"><small>PROFIT</small><b class="profit">$<span id="profit">0</span></b></div></div><div id="reactStatus" class="reactStatus good">⚡ BEST REACTION ZONE</div><div class="gauge"><div class="scale"><div class="target"></div><div class="needle" id="needle"></div></div></div><div class="reactControls"><button id="lessCool" class="coolless">🔥 LESS COOLING<br><small>← / A</small></button><button id="moreCool" class="coolmore">❄️ MORE COOLING<br><small>→ / D</small></button></div><div id="blowdown" class="dangerOverlay"><div><div class="steam">💨💨💨</div><h3>BLOWDOWN!</h3><p>R-101 emergency shutdown activated</p></div></div><div id="reactOverlay" class="startoverlay"><div><h3>KEEP THE NEEDLE IN GREEN</h3><div class="rule"><b>EXOTHERMIC REACTOR:</b> keep it GREEN.<br>Cold = slow reaction + less money. Hot = runaway risk.</div><button class="bigbtn" id="reactGo">GO!</button></div></div></div></div></div></section>
+    <section id="result" class="screen"><div class="results"><div style="color:var(--cyan);font-weight:900;letter-spacing:.15em">ROUND COMPLETE</div><h2 id="resultTitle">Result</h2><div class="scorebig" id="resultScore">0</div><p id="resultDetail"></p><div class="formrow"><input id="playerName" maxlength="18" placeholder="Your name"/><select id="playerMajor"><option value="">Choose your major</option><option>Chemical Engineering</option><option>Mechanical Engineering</option><option>Electrical Engineering</option><option>Electronics Engineering</option><option>Computer Engineering</option><option>Civil Engineering</option><option>Architecture</option><option>Other Engineering</option></select></div><div class="actions"><button id="saveScore" class="bigbtn">ADD TO LEADERBOARD</button><button id="playAgain" class="secondary">PLAY AGAIN</button><button id="backGames" class="secondary">CHOOSE GAME</button></div><div id="saveMsg" style="margin-top:12px;color:var(--green);font-weight:900"></div></div><div class="board"><h3 id="boardTitle">Leaderboard</h3><div class="rows" id="boardRows"></div></div></section>
+  </main>
+  <script src="js/game.js" defer></script>
+</body>
+</html>
